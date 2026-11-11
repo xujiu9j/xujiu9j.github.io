@@ -1,0 +1,46 @@
+{{- /*
+  教程信息卡
+  用法：
+  {{< tutorial device="小米 14" os="HyperOS 2.0" difficulty="中等" time="30 分钟" risk="中" tools="ADB, MiFlash" >}}
+  所有参数可选
+*/ -}}
+{{- $device := .Get "device" -}}
+{{- $os := .Get "os" -}}
+{{- $difficulty := .Get "difficulty" -}}
+{{- $time := .Get "time" -}}
+{{- $risk := .Get "risk" -}}
+{{- $tools := .Get "tools" -}}
+{{- $scope := .Get "scope" -}}
+
+<div class="tut-card">
+  <div class="tut-card-head">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+    </svg>
+    <span>教程信息</span>
+  </div>
+  <div class="tut-card-body">
+    {{- with $device }}
+    <div class="tut-item"><span class="tut-k">适用设备</span><span class="tut-v">{{ . }}</span></div>
+    {{- end }}
+    {{- with $os }}
+    <div class="tut-item"><span class="tut-k">系统 / 版本</span><span class="tut-v">{{ . }}</span></div>
+    {{- end }}
+    {{- with $tools }}
+    <div class="tut-item"><span class="tut-k">所需工具</span><span class="tut-v">{{ . }}</span></div>
+    {{- end }}
+    {{- with $difficulty }}
+    <div class="tut-item"><span class="tut-k">难度</span><span class="tut-v tut-badge">{{ . }}</span></div>
+    {{- end }}
+    {{- with $time }}
+    <div class="tut-item"><span class="tut-k">预计耗时</span><span class="tut-v">{{ . }}</span></div>
+    {{- end }}
+    {{- with $risk }}
+    <div class="tut-item"><span class="tut-k">风险等级</span><span class="tut-v tut-risk">{{ . }}</span></div>
+    {{- end }}
+    {{- with $scope }}
+    <div class="tut-item"><span class="tut-k">适用范围</span><span class="tut-v">{{ . }}</span></div>
+    {{- end }}
+  </div>
+</div>
