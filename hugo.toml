@@ -1,0 +1,117 @@
+baseURL = "https://xujiu9j.github.io/"
+languageCode = "zh-cn"
+defaultContentLanguage = "zh"
+title = "许玖的博客"
+theme = "PaperMod"
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+[pagination]
+  pagerSize = 8
+hasCJKLanguage = true
+summaryLength = 60
+
+[minify]
+  disableXML = true
+  minifyOutput = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    lineNos = false
+    codeFences = true
+    guessSyntax = true
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[params]
+  env = "production"
+  description = "记录技术折腾与日常思考"
+  keywords = ["博客", "技术", "Hugo", "许玖"]
+  author = "许玖"
+
+  DateFormat = "2006-01-02"
+  defaultTheme = "auto"
+  disableThemeToggle = false
+
+  ShowReadingTime = true
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecial1stPost = true
+  disableScrollToTop = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = true
+  tocopen = false
+
+  mainSections = ["posts"]
+
+  [params.assets]
+    disableHLJS = false
+    disableFingerprinting = true
+
+  [params.homeInfoParams]
+    Title = "你好，我是许玖 👋"
+    Content = "这里是记录技术折腾、工具开发与日常思考的地方。"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/xujiu9j"
+
+  [[params.socialIcons]]
+    name = "rss"
+    url = "https://xujiu9j.github.io/index.xml"
+
+  [params.editPost]
+    URL = ""
+    Text = "编辑此页"
+    appendFilePath = true
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = ["title", "permalink", "summary", "content"]
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "tags"
+  name = "标签"
+  url = "/tags/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "archives"
+  name = "归档"
+  url = "/archives/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "search"
+  name = "搜索"
+  url = "/search/"
+  weight = 40
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 50
