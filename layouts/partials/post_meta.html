@@ -1,0 +1,18 @@
+{{- $scratch := newScratch }}
+
+{{- if not .Date.IsZero -}}
+{{- $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format (default "2006-01-02" site.Params.DateFormat)))) }}
+{{- end }}
+
+{{- with .Params.categories -}}
+{{- $cat := index . 0 -}}
+{{- $scratch.Add "meta" (slice (printf "<a class='meta-cat' href='%s'>%s</a>" (printf "/categories/%s/" (urlize $cat)) $cat)) }}
+{{- end }}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $scratch.Add "meta" (slice (i18n "read_time" .ReadingTime | default (printf "%d 分钟" .ReadingTime))) }}
+{{- end }}
+
+{{- with ($scratch.Get "meta") }}
+{{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+{{- end -}}
