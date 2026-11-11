@@ -1,0 +1,29 @@
+{{- if .IsPage }}
+<script>
+(function () {
+    if (!document.querySelector('.post-single')) return;
+    var bar = document.createElement('div');
+    bar.id = 'reading-progress';
+    document.body.appendChild(bar);
+
+    var ticking = false;
+    function update() {
+        var el = document.documentElement;
+        var top = el.scrollTop || document.body.scrollTop;
+        var height = el.scrollHeight - el.clientHeight;
+        var pct = height > 0 ? (top / height) * 100 : 0;
+        bar.style.width = pct.toFixed(2) + '%';
+        ticking = false;
+    }
+    function onScroll() {
+        if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(update);
+        }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+})();
+</script>
+{{- end }}
